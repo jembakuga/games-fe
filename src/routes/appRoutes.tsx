@@ -8,6 +8,12 @@ import AnalyticsPage from "../pages/dashboard/AnalyticsPage";
 import SaasPage from "../pages/dashboard/SaasPage";
 import ComponentPageLayout from "../pages/component/ComponentPageLayout";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
+import KeyIcon from '@mui/icons-material/Key';
+import NextWeekIcon from '@mui/icons-material/NextWeek';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
@@ -24,20 +30,11 @@ const appRoutes: RouteType[] = [
     state: "home"
   },
   {
-    path: "/installation",
-    element: <InstallationPage />,
-    state: "installation",
-    sidebarProps: {
-      displayText: "Installation",
-      icon: <FileDownloadOutlinedIcon />
-    }
-  },
-  {
     path: "/dashboard",
     element: <DashboardPageLayout />,
     state: "dashboard",
     sidebarProps: {
-      displayText: "Dashboard",
+      displayText: "Home",
       icon: <DashboardOutlinedIcon />
     },
     child: [
@@ -48,10 +45,10 @@ const appRoutes: RouteType[] = [
       },
       {
         path: "/dashboard/default",
-        element: <DefaultPage />,
+        element: <DashboardIndex />,
         state: "dashboard.default",
         sidebarProps: {
-          displayText: "Default"
+          displayText: "Dashboard"
         },
       },
       {
@@ -59,15 +56,7 @@ const appRoutes: RouteType[] = [
         element: <AnalyticsPage />,
         state: "dashboard.analytics",
         sidebarProps: {
-          displayText: "Analytic"
-        }
-      },
-      {
-        path: "/dashboard/saas",
-        element: <SaasPage />,
-        state: "dashboard.saas",
-        sidebarProps: {
-          displayText: "Saas"
+          displayText: "Total Summary Reports"
         }
       }
     ]
@@ -77,8 +66,8 @@ const appRoutes: RouteType[] = [
     element: <ComponentPageLayout />,
     state: "component",
     sidebarProps: {
-      displayText: "Components",
-      icon: <AppsOutlinedIcon />
+      displayText: "Wallet Station",
+      icon: <NextWeekIcon />
     },
     child: [
       {
@@ -86,7 +75,7 @@ const appRoutes: RouteType[] = [
         element: <AlertPage />,
         state: "component.alert",
         sidebarProps: {
-          displayText: "Alert"
+          displayText: "Wallet Station"
         },
       },
       {
@@ -94,27 +83,90 @@ const appRoutes: RouteType[] = [
         element: <ButtonPage />,
         state: "component.button",
         sidebarProps: {
-          displayText: "Button"
+          displayText: "Wallet Logs"
         }
       }
     ]
   },
   {
-    path: "/documentation",
+    path: "/commission",
     element: <DocumentationPage />,
     state: "documentation",
     sidebarProps: {
-      displayText: "Documentation",
-      icon: <ArticleOutlinedIcon />
-    }
+      displayText: "Commission",
+      icon: <MonetizationOnIcon />
+    },
+    child: [
+      {
+        path: "/commission/self",
+        element: <AlertPage />,
+        state: "commission.alert",
+        sidebarProps: {
+          displayText: "Self Convert Commission"
+        },
+      },
+      {
+        path: "/commission/logs",
+        element: <AlertPage />,
+        state: "commission.alert",
+        sidebarProps: {
+          displayText: "Commission Logs"
+        },
+      }
+    ]
   },
   {
-    path: "/changelog",
+    path: "/player",
+    element: <ChangelogPage />,
+    state: "player",
+    sidebarProps: {
+      displayText: "Player",
+      icon: <AccountCircleIcon />
+    },
+    child: [
+      {
+        path: "/player/active",
+        element: <AlertPage />,
+        state: "commission.alert", 
+        sidebarProps: {
+          displayText: "Active Players"
+        },
+      },
+      {
+        path: "/player/approval",
+        element: <AlertPage />,
+        state: "commission.alert",
+        sidebarProps: {
+          displayText: "For approvals"
+        },
+      }
+    ]
+  },
+  {
+    path: "/subadmin",
     element: <ChangelogPage />,
     state: "changelog",
     sidebarProps: {
-      displayText: "Changelog",
-      icon: <FormatListBulletedOutlinedIcon />
+      displayText: "My SUB ADMIN",
+      icon: <SupervisorAccountIcon />
+    }
+  },
+  {
+    path: "/changepassword",
+    element: <ChangelogPage />,
+    state: "changelog",
+    sidebarProps: {
+      displayText: "Change Passowrd",
+      icon: <KeyIcon />
+    }
+  },
+  {
+    path: "/logout",
+    element: <ChangelogPage />,
+    state: "changelog",
+    sidebarProps: {
+      displayText: "Logout",
+      icon: <LogoutIcon />
     }
   }
 ];
