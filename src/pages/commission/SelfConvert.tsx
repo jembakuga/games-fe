@@ -25,8 +25,8 @@ const SelfConvert = (props: Props) => {
 
   const rows = [
     createData(1, '01/01/2023', 'richard', 'withdraw', 100, 'movement', 400),
-    createData(1, '01/01/2023', 'arman', 'withdraw', 100, 'movement', 11500),
-    createData(1, '01/01/2023', 'aj', 'withdraw', 100, 'movement', 6500),
+    createData(2, '01/01/2023', 'arman', 'withdraw', 100, 'movement', 11500),
+    createData(3, '01/01/2023', 'aj', 'withdraw', 100, 'movement', 6500),
   ];
 
   
