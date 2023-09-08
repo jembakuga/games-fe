@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function SabongComm() {
+export default function SabongComm({totalCommission} : {totalCommission : number}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -14,7 +14,7 @@ export default function SabongComm() {
            Total Commission (0%)
           </Typography>   
           <Typography gutterBottom variant="h4" component="div">
-            1000
+            {totalCommission}
           </Typography>          
         </CardContent>
       </CardActionArea>

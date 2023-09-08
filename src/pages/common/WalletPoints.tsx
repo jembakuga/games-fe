@@ -4,8 +4,10 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import axios from 'axios';
 
-export default function WalletPoints() {
+export default function WalletPoints({walletPoints} : {walletPoints : number}) {
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -14,7 +16,7 @@ export default function WalletPoints() {
             Wallet Points
           </Typography>   
           <Typography gutterBottom variant="h4" component="div">
-            1000
+            {walletPoints}
           </Typography>          
         </CardContent>
       </CardActionArea>

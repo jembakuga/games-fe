@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function TotalPoints() {
+export default function TotalPoints({totalPoints} : {totalPoints : number}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -14,7 +14,7 @@ export default function TotalPoints() {
             Total Points
           </Typography>   
           <Typography gutterBottom variant="h4" component="div">
-            300
+            {totalPoints}
           </Typography>          
         </CardContent>
       </CardActionArea>
