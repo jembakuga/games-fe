@@ -1,38 +1,35 @@
-import DashboardPageLayout from "../pages/dashboard/DashboardPageLayout";
-import HomePage from "../pages/home/HomePage";
+import DashboardPageLayout from "../pages/home/DashboardPageLayout";
 import { RouteType } from "./config";
-import DefaultPage from "../pages/dashboard/DefaultPage";
-import DashboardIndex from "../pages/dashboard/DashboardIndex";
-import ChangelogPage from "../pages/changelog/ChangelogPage";
-import AnalyticsPage from "../pages/dashboard/AnalyticsPage";
-import SaasPage from "../pages/dashboard/SaasPage";
-import ComponentPageLayout from "../pages/component/ComponentPageLayout";
+import Dashboard from "../pages/home/Dashboard";
+import SubAdmin from "../pages/subadmin/SubAdmin";
+import TotalSummaryReport from "../pages/home/TotalSummaryReport";
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import KeyIcon from '@mui/icons-material/Key';
 import NextWeekIcon from '@mui/icons-material/NextWeek';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
-import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
-import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import AlertPage from "../pages/component/AlertPage";
-import ButtonPage from "../pages/component/ButtonPage";
-import InstallationPage from "../pages/installation/InstallationPage";
-import DocumentationPage from "../pages/documentation/DocumentationPage";
+import AlertPage from "../pages/wallet/Station";
+import WalletLogs from "../pages/wallet/Logs";
+import CommissionLogs from "../pages/commission/Logs";
+import LandingPage from "../pages/landing/LandingPage";
+import WalletPageLayout from "../pages/wallet/WalletPageLayout";
+import CommissionPageLayout from "../pages/commission/CommissionPageLayout";
+import SelfConvert from "../pages/commission/SelfConvert";
+import Active from "../pages/player/Active";
+import PlayerPageLayout from "../pages/player/PlayerPageLayout";
+import Approval from "../pages/player/Approval";
 
 const appRoutes: RouteType[] = [
   {
     index: true,
-    element: <HomePage />,
-    state: "home"
+    element: <LandingPage />,
+    state: "landingpage"
   },
   {
-    path: "/dashboard",
+    path: "/home",
     element: <DashboardPageLayout />,
-    state: "dashboard",
+    state: "home",
     sidebarProps: {
       displayText: "Home",
       icon: <DashboardOutlinedIcon />
@@ -40,21 +37,21 @@ const appRoutes: RouteType[] = [
     child: [
       {
         index: true,
-        element: <DashboardIndex />,
-        state: "dashboard.index"
+        element: <Dashboard />,
+        state: "home.index"
       },
       {
-        path: "/dashboard/default",
-        element: <DashboardIndex />,
-        state: "dashboard.default",
+        path: "/home/dashboard",
+        element: <Dashboard />,
+        state: "home.dashboard",
         sidebarProps: {
           displayText: "Dashboard"
         },
       },
       {
-        path: "/dashboard/analytics",
-        element: <AnalyticsPage />,
-        state: "dashboard.analytics",
+        path: "/home/totalSummaryReport",
+        element: <TotalSummaryReport />,
+        state: "home.totalSummaryReport",
         sidebarProps: {
           displayText: "Total Summary Reports"
         }
@@ -62,26 +59,26 @@ const appRoutes: RouteType[] = [
     ]
   },
   {
-    path: "/component",
-    element: <ComponentPageLayout />,
-    state: "component",
+    path: "/wallet",
+    element: <WalletPageLayout />,
+    state: "wallet",
     sidebarProps: {
       displayText: "Wallet Station",
       icon: <NextWeekIcon />
     },
     child: [
       {
-        path: "/component/alert",
+        path: "/wallet/station",
         element: <AlertPage />,
-        state: "component.alert",
+        state: "wallet.station",
         sidebarProps: {
           displayText: "Wallet Station"
         },
       },
       {
-        path: "/component/button",
-        element: <ButtonPage />,
-        state: "component.button",
+        path: "/wallet/logs",
+        element: <WalletLogs />,
+        state: "wallet.logs",
         sidebarProps: {
           displayText: "Wallet Logs"
         }
@@ -90,34 +87,34 @@ const appRoutes: RouteType[] = [
   },
   {
     path: "/commission",
-    element: <DocumentationPage />,
-    state: "documentation",
+    element: <CommissionPageLayout />,
+    state: "commission",
     sidebarProps: {
       displayText: "Commission",
-      icon: <MonetizationOnIcon />
+      icon: <NextWeekIcon />
     },
     child: [
       {
         path: "/commission/self",
-        element: <AlertPage />,
-        state: "commission.alert",
+        element: <SelfConvert />,
+        state: "commission.self",
         sidebarProps: {
           displayText: "Self Convert Commission"
         },
       },
       {
         path: "/commission/logs",
-        element: <AlertPage />,
-        state: "commission.alert",
+        element: <CommissionLogs />,
+        state: "commission.logs",
         sidebarProps: {
           displayText: "Commission Logs"
-        },
+        }
       }
     ]
   },
   {
     path: "/player",
-    element: <ChangelogPage />,
+    element: <PlayerPageLayout />,
     state: "player",
     sidebarProps: {
       displayText: "Player",
@@ -126,16 +123,16 @@ const appRoutes: RouteType[] = [
     child: [
       {
         path: "/player/active",
-        element: <AlertPage />,
-        state: "commission.alert", 
+        element: <Active />,
+        state: "player.active", 
         sidebarProps: {
           displayText: "Active Players"
         },
       },
       {
         path: "/player/approval",
-        element: <AlertPage />,
-        state: "commission.alert",
+        element: <Approval />,
+        state: "player.approval",
         sidebarProps: {
           displayText: "For approvals"
         },
@@ -144,7 +141,7 @@ const appRoutes: RouteType[] = [
   },
   {
     path: "/subadmin",
-    element: <ChangelogPage />,
+    element: <SubAdmin />,
     state: "changelog",
     sidebarProps: {
       displayText: "My SUB ADMIN",
@@ -153,7 +150,7 @@ const appRoutes: RouteType[] = [
   },
   {
     path: "/changepassword",
-    element: <ChangelogPage />,
+    element: <SubAdmin />,
     state: "changelog",
     sidebarProps: {
       displayText: "Change Passowrd",
@@ -162,7 +159,7 @@ const appRoutes: RouteType[] = [
   },
   {
     path: "/logout",
-    element: <ChangelogPage />,
+    element: <SubAdmin />,
     state: "changelog",
     sidebarProps: {
       displayText: "Logout",

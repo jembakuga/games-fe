@@ -11,7 +11,7 @@ export default function SabongComm() {
       <CardActionArea>
         <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-            Sabong Current Commission (0%)
+           Total Commission (0%)
           </Typography>   
           <Typography gutterBottom variant="h4" component="div">
             1000
