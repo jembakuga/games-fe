@@ -9,7 +9,7 @@ type Props = {};
 
 const Dashboard = (props: Props) => {
   const [sabongComm, setSabongComm] = useState(0);
-  const [toatlComm, setTotalComm] = useState(0);
+  const [totalComm, setTotalComm] = useState(0);
   const [walletPoints, setWalletPoints] = useState(0);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Dashboard = (props: Props) => {
             </div>
             <br />
             <div className="row">
-              <div className="col-sm-3"><TotalCommission totalCommission={toatlComm} /> <WalletPoints walletPoints={walletPoints}/></div>
+              <div className="col-sm-3"><TotalCommission totalCommission={totalComm} /> <WalletPoints walletPoints={walletPoints}/></div>
             </div>
           </div>
         </div>
