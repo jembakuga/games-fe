@@ -77,7 +77,6 @@ const Logs = (props: Props) => {
             },
           }}
           pageSizeOptions={[5, 10]}
-          checkboxSelection
         />
       </div>
       <br />
@@ -92,7 +91,6 @@ const Logs = (props: Props) => {
             },
           }}
           pageSizeOptions={[5, 10]}
-          checkboxSelection
         />
       </div>
 

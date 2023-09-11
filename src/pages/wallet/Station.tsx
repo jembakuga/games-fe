@@ -60,13 +60,12 @@ const AlertPage = (props: Props) => {
 
   return (
     <>
-
       <Grid container spacing={1}>
-        <Grid item lg={12} xs={12}><h3>Wallet Mangement</h3></Grid>
-        <Grid item lg={12} xs={12}><WalletPoints walletPoints={walletPoints} /></Grid>
-        <Grid item lg={12}><br /></Grid>
-        <Grid item lg={12} xs={12}><h3>Wallet Loading Station</h3></Grid>
-        <Grid item lg={6} xs={6}>
+        <Grid item lg={12} md={12} xs={12}><h3>Wallet Mangement</h3></Grid>        
+        <Grid item lg={12} md={12} xs={12}><WalletPoints walletPoints={walletPoints} /></Grid>
+        <Grid item lg={12} md={12} xs={12}><h3>Wallet Loading Station</h3></Grid>
+
+        <Grid item lg={6} md={6} xs={12}>
           <TextField
             id="transactionType"
             select
@@ -87,8 +86,9 @@ const AlertPage = (props: Props) => {
             </MenuItem>
           </TextField>
         </Grid>
-        <Grid item lg={12}><br /></Grid>
-        <Grid item lg={4} xs={4}>
+        <Grid item lg={6} md={6} xs={12}></Grid>
+
+        <Grid item lg={4} md={6} xs={12}>
           <TextField
             id="player"
             select
@@ -107,7 +107,7 @@ const AlertPage = (props: Props) => {
             ))}
           </TextField>
         </Grid>
-        <Grid item lg={2} xs={2}>
+        <Grid item lg={2} xs={12}>
           <TextField
             id="amount"
             label="Amount"
@@ -120,8 +120,8 @@ const AlertPage = (props: Props) => {
             }}
           />
         </Grid>
-        <Grid item lg={12}><br /></Grid>
-        <Grid item lg={6} xs={6}>
+        <Grid item lg={6} xs={12}></Grid>
+        <Grid item lg={6} md={6} xs={12}>
           <TextField
             fullWidth
             id="outlined-number"
@@ -134,9 +134,11 @@ const AlertPage = (props: Props) => {
             }}
           />
         </Grid>
-        <Grid item lg={12}><br /></Grid>
+        <Grid item lg={6} xs={12}></Grid>
+
         <Grid item lg={1} xs={12}><Button variant="contained" onClick={handleSubmitClick}>Submit</Button></Grid>
         <Grid item lg={1} xs={12}><Button variant="contained">Cancel</Button></Grid>
+        <Grid item lg={10} xs={12}></Grid>
       </Grid>
 
       <Dialog
