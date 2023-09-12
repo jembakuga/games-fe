@@ -1,38 +1,21 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Box, Grid, SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import SaveIcon from '@mui/icons-material/Save';
-import PrintIcon from '@mui/icons-material/Print';
-import ShareIcon from '@mui/icons-material/Share';
-import PlayerMenu from "./common/PlayerMenu";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import SabongMain from './sabong/SabongMain';
+import ToolbarComponent from './common/ToolbarComponent';
+import Lotto3DMain from './lotto3d/Lotto3DMain';
+import Ec2Main from './ec2/Ec2GameMain';
 
-type Props = {};
 
-const actions = [
-    { icon: <ContentCopyIcon />, name: 'Copy' },
-    { icon: <SaveIcon />, name: 'Save' },
-    { icon: <PrintIcon />, name: 'Print' },
-    { icon: <ShareIcon />, name: 'Share' },
-  ];
-
-const PlayerMain = (props: Props) => { 
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/home/loadDashBoard/1")
-      .then((res) => {
-        console.log(res.data);
-        
-      });
-  }, [])
-
+const PlayerMain = () => {
   return (
     <>
-      <Box sx={{ height: 320, transform: 'translateZ(0px)', flexGrow: 1 }}>
-     <PlayerMenu />
-    </Box>
-    </>
+      <ToolbarComponent />
+      <Routes>
+        <Route path="/sabong" element={<SabongMain />} />
+        <Route path="/ec2" element={<Ec2Main />} />
+        <Route path="/lotto3D" element={<Lotto3DMain />} />
+      </Routes>
+      </>
   );
 };
 

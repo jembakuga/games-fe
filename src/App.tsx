@@ -5,14 +5,17 @@ import PlayerMain from "./player/PlayerMain";
 
 function App() {
   return (
-    /*<PlayerMain />*/
     <BrowserRouter>
+    <PlayerMain />
+    </BrowserRouter>
+    
+    /*<BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           {routes}
         </Route>
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter>*/
   );
 }
 
