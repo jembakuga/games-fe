@@ -1,7 +1,7 @@
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import SabongComm from '../common/SabongComm';
+import SabongComm from '../common/SabongCommission';
 import TotalPoints from '../common/TotalPoints';
 
 type Props = {};
@@ -46,7 +46,7 @@ const SelfConvert = (props: Props) => {
       <div>Commission Mangement</div>
       <div className="card">
         <div className="row">
-        <div className="col-sm"><SabongComm sabongCurrentCommission={sabongComm} /></div>
+        <div className="col-sm"><SabongComm sabongCommission={sabongComm} /></div>
         </div>
         <br />
         <div className="row">

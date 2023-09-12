@@ -1,7 +1,7 @@
 import { Avatar, Drawer, List, Stack, Toolbar } from "@mui/material";
 import assets from "../../assets";
-import colorConfigs from "../../configs/colorConfigs";
-import sizeConfigs from "../../configs/sizeConfigs";
+import colorConfigs from "../../../agent/configs/colorConfigs";
+import sizeConfigs from "../../../agent/configs/sizeConfigs";
 import appRoutes from "../../routes/appRoutes";
 import SidebarItem from "./SidebarItem";
 import SidebarItemCollapse from "./SidebarItemCollapse";

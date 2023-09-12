@@ -32,7 +32,7 @@ const WalletStation = (props: Props) => {
       .get("http://localhost:8080/home/loadDashBoard/1")
       .then((res) => {
         //console.log(res.data);
-        setWalletPoint(res.data.data.sabongCurrentCommission);
+        setWalletPoint(res.data.data.walletPoints);
       });
 
     axios
@@ -52,7 +52,8 @@ const WalletStation = (props: Props) => {
       .post("http://localhost:8080/wallet/addWalletPointsToPlayer", {
         playerId: selectedPlayer,
         amount: amount,
-        details: details
+        details: details,
+        type: selectedTransactionType
       })
       .then((res) => {
         console.log(res.data);
@@ -77,7 +78,6 @@ const WalletStation = (props: Props) => {
         <Grid item lg={12} md={12} xs={12}><h3>Wallet Mangement</h3></Grid>
         <Grid item lg={12} md={12} xs={12}><WalletPoints walletPoints={walletPoints} /></Grid>
         <Grid item lg={12} md={12} xs={12}><h3>Wallet Loading Station</h3></Grid>
-
         <Grid item lg={6} md={6} xs={12}>
           <TextField
             select

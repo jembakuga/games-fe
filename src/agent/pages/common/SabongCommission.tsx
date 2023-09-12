@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function TotalCommission({sabongCurrentCommission} : {sabongCurrentCommission : number}) {
+export default function SabongCommission({sabongCommission} : {sabongCommission : number}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -13,7 +13,7 @@ export default function TotalCommission({sabongCurrentCommission} : {sabongCurre
             Sabong Current Commission
           </Typography>   
           <Typography gutterBottom variant="h4" component="div">
-          {sabongCurrentCommission}
+          {sabongCommission}
           </Typography>          
         </CardContent>
       </CardActionArea>
