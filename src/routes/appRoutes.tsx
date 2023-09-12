@@ -9,7 +9,7 @@ import KeyIcon from '@mui/icons-material/Key';
 import NextWeekIcon from '@mui/icons-material/NextWeek';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
-import AlertPage from "../pages/wallet/Station";
+import WalletStation from "../pages/wallet/WalletStation";
 import WalletLogs from "../pages/wallet/Logs";
 import CommissionLogs from "../pages/commission/Logs";
 import LandingPage from "../pages/landing/LandingPage";
@@ -69,7 +69,7 @@ const appRoutes: RouteType[] = [
     child: [
       {
         path: "/wallet/station",
-        element: <AlertPage />,
+        element: <WalletStation />,
         state: "wallet.station",
         sidebarProps: {
           displayText: "Wallet Station"

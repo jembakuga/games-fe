@@ -6,46 +6,59 @@ import TextField from '@mui/material/TextField';
 
 type Props = {};
 
-const AlertPage = (props: Props) => {
+const transactionTypes = [
+  { value: '1', label: 'Deposit' },
+  { value: '2', label: 'Withdraw' }
+];
+
+const WalletStation = (props: Props) => {
   const [walletPoints, setWalletPoint] = useState(0);
-  const [transactionType, setTransactionType] = useState(""); // State to track the selected option
-  const [players, setPlayers] = useState([{ key: "", label: " " }]); // Initial options
   const [amount, setAmount] = useState('');
   const [details, setDetails] = useState('');
-  const [playerId, setPlayerId] = useState('');
   const [open, setOpen] = useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   const [message, setMessage] = useState('');
+  const [selectedTransactionType, setSelectedTransactionType] = useState<string>('');
+  const [selectedPlayer, setSelectedPlayer] = useState<string>('');
+  const [players, setPlayers] = useState([{ key: '', label: '' }]);
+
+  const playerList = [
+    { value: '', label: '' }
+  ];
 
   useEffect(() => {
     axios
       .get("http://localhost:8080/home/loadDashBoard/1")
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         setWalletPoint(res.data.data.sabongCurrentCommission);
       });
 
     axios
       .get("http://localhost:8080/player/findAgentPlayers/1")
       .then((res) => {
-        console.log(res.data.data);
         setPlayers(res.data.data);
+        for (var i = 0; i < res.data.data.length; i++) {
+          console.log("i");
+          playerList.push({ value: res.data.data[i].key, label: res.data.data[i].label })
+        }
+        //
       });
   }, [])
 
   const handleSubmitClick = () => {
     axios
       .post("http://localhost:8080/wallet/addWalletPointsToPlayer", {
-        playerId: playerId,
+        playerId: selectedPlayer,
         amount: amount,
         details: details
       })
       .then((res) => {
         console.log(res.data);
-        if(!res.data.success){          
+        if (!res.data.success) {
           setMessage(res.data.message);
-        }else{
+        } else {
           setMessage("Load done");
         }
         setOpen(true);
@@ -61,29 +74,27 @@ const AlertPage = (props: Props) => {
   return (
     <>
       <Grid container spacing={1}>
-        <Grid item lg={12} md={12} xs={12}><h3>Wallet Mangement</h3></Grid>        
+        <Grid item lg={12} md={12} xs={12}><h3>Wallet Mangement</h3></Grid>
         <Grid item lg={12} md={12} xs={12}><WalletPoints walletPoints={walletPoints} /></Grid>
         <Grid item lg={12} md={12} xs={12}><h3>Wallet Loading Station</h3></Grid>
 
         <Grid item lg={6} md={6} xs={12}>
           <TextField
-            id="transactionType"
             select
-            label="Select transaction type"
-            onChange={(event) => {
-              setTransactionType(event.target.value);
-            }}
+            label="Select a transaction type"
+            variant="outlined"
             fullWidth
+            value={selectedTransactionType}
+            onChange={(event) => {
+              setSelectedTransactionType(event.target.value);
+            }}
+            margin="normal"
           >
-            <MenuItem key={""} value={""}>
-
-            </MenuItem>
-            <MenuItem key={"1"} value={"Deposit"}>
-              Deposit
-            </MenuItem>
-            <MenuItem key={"2"} value={"Withdraw"}>
-              Withdraw
-            </MenuItem>
+            {transactionTypes.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
           </TextField>
         </Grid>
         <Grid item lg={6} md={6} xs={12}></Grid>
@@ -92,20 +103,21 @@ const AlertPage = (props: Props) => {
           <TextField
             id="player"
             select
-            label="Select Player"
+            label="Select an agent/player"
             fullWidth
+            value={selectedPlayer}
             onChange={(event) => {
-              setPlayerId(event.target.value);
+              setSelectedPlayer(event.target.value);
             }}
+            margin="normal"
           >
-            <MenuItem key={""} value={""}>
-            </MenuItem>
-            {players.map((option) => (
-              <MenuItem key={option.key} value={option.key}>
-                {option.label}
+            {players.map((item) => (
+              <MenuItem key={item.key} value={item.key}>
+                {item.label}
               </MenuItem>
             ))}
           </TextField>
+
         </Grid>
         <Grid item lg={2} xs={12}>
           <TextField
@@ -165,4 +177,4 @@ const AlertPage = (props: Props) => {
   );
 };
 
-export default AlertPage;
+export default WalletStation;
