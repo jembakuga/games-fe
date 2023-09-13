@@ -1,3 +1,4 @@
+import React from "react";
 import DashboardPageLayout from "../pages/home/DashboardPageLayout";
 import { RouteType } from "./config";
 import Dashboard from "../pages/home/Dashboard";
@@ -19,6 +20,7 @@ import SelfConvert from "../pages/commission/SelfConvert";
 import Active from "../pages/player/Active";
 import PlayerPageLayout from "../pages/player/PlayerPageLayout";
 import Approval from "../pages/player/Approval";
+
 
 const appRoutes: RouteType[] = [
   {

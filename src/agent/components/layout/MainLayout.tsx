@@ -1,3 +1,4 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import { Box, Toolbar } from "@mui/material";
 import colorConfigs from "../../../agent/configs/colorConfigs";
