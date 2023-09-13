@@ -125,6 +125,7 @@ const WalletStation = (props: Props) => {
             label="Amount"
             type="number"
             onChange={(event) => {
+              console.log(event);
               setAmount(event.target.value);
             }}
             InputLabelProps={{

@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 export interface MediaProps {
   title: string;
+  url: string;
 }
 
 export default function MediaCard(props: MediaProps) {

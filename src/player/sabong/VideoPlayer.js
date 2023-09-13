@@ -3,7 +3,7 @@ import Hls from 'hls.js';
 
 const VideoPlayer = ({ m3u8Url }) => {
   const videoRef = useRef(null);
-
+  console.log(m3u8Url);
   const playVideo = () => {
     const video = videoRef.current;
 
@@ -24,7 +24,7 @@ const VideoPlayer = ({ m3u8Url }) => {
 
   return (
     <div>
-      <video ref={videoRef} controls width="640" height="360"></video>
+      <video ref={videoRef} controls width="800" height="400"></video><br />
       <button onClick={playVideo}>Play Video</button>
     </div>
   );

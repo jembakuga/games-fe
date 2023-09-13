@@ -24,7 +24,7 @@ const handleButtonClick = async (row: any) => {
   console.log('Button clicked for row:', row);
   axios
     .post("http://localhost:8080/player/approvePlayer", {
-      approvalPlayersId: row.approvalPlayersId,
+      id: row.id,
     })
     .then((res) => {
       console.log(res.data.result);
@@ -51,6 +51,7 @@ const Approval = (props: Props) => {
       .then((res) => {
         console.log(res.data.success);
         if(res.data.success){
+          console.log(res.data.data)
           setPlayers(res.data.data);
         }
         

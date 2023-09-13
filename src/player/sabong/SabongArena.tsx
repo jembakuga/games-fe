@@ -1,24 +1,33 @@
 import * as React from 'react';
-import { Grid } from '@mui/material';
-import MediaCard from './MediaCard';
+import { Grid, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
-import CurrentPoints from '../common/CurrentPoints';
 import { useParams } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer';
+import BettingArea from './BettingArea';
 
 const SabongArena = () => {
   const { title, url } = useParams();
-
-  const [games, setGames] = useState([{ key: '1', label: 'test1' }, { key: '2', label: 'test2' }]);
-
+  console.log(title, url)
+  
   return (
     <Grid container spacing={1} sx={{ borderLeft: '10px solid #e0e0e0' }}>
       <Grid item lg={12}><br /></Grid>
-      <Grid item lg={12} md={12} xs={12}>Title {title}</Grid>
-      <Grid item lg={6} md={6} xs={12}>
-        <VideoPlayer m3u8Url={url} />
-
+      <Grid item lg={6} md={12} xs={12}>
+        <Typography gutterBottom variant="h6" component="div">
+          Title {title}
+        </Typography>
       </Grid>
+      <Grid item lg={6} md={12} xs={12}>
+        <Typography gutterBottom variant="h6" component="div">
+          Balance {title}
+        </Typography>
+      </Grid>
+      <Grid item lg={6} md={6} xs={12}>
+        <VideoPlayer m3u8Url="testste" />
+      </Grid>
+      <Grid item lg={6} md={6} xs={12}>
+        <BettingArea betType={'100'} walaTotalBet={123} walaPayout={32} meronTotalBet={444} meronPayout={788} betAmount={0} />
+        </Grid>
     </Grid>
   );
 }

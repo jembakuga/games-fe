@@ -17,7 +17,7 @@ const SabongMain = (props: Props) => {
       
       {games.map((option) => (
         <Grid item lg={3} md={3} xs={12} key={option.key}>
-              <MediaCard key={option.key} title={option.label} />
+              <MediaCard key={option.key} title={option.label} url={option.url} />
               </Grid>
             ))}  
       <Grid item lg={6} md={6} xs={12}>
