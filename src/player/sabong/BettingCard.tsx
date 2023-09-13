@@ -6,16 +6,17 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 
-export interface MediaProps {
+export interface ChildProps {
+  amount: number;
   betType: string;
   totalBet: number;
   payout: number;
-  betAmount: number;
+  onUpdateAmount: (newMessage: number) => void;
 }
 
-export default function BettingCard(props: MediaProps) {
+export default function BettingCard({ amount, onUpdateAmount, betType, totalBet, payout }: ChildProps) {
 
-  const [data, setData] = useState<string | null>(null);
+  const [newAmount, setNewAmount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,31 +39,37 @@ export default function BettingCard(props: MediaProps) {
     // Clean up the timer when the component unmounts
     return () => clearInterval(intervalId);
   }, []);
+
+  const handleUpdateAmount = () => {
+    onUpdateAmount(amount);
+    setNewAmount(amount);
+    //setAmount(''); // Clear the input field after updating the message
+  };
   
 
   return (
     <Card sx={{ maxWidth: 400 }}>
       <CardContent>
         <Typography gutterBottom variant="h4" component="div">
-          {props.betType}
+        {betType}
         </Typography>
         <Typography variant="h4" color="text.secondary">
-          {props.totalBet}
+        {totalBet}
         </Typography>
         <Typography variant="h4" color="text.secondary">
-          {props.payout}
+        {payout}
         </Typography>
         <Typography variant="h4" color="text.secondary">
-          {props.betAmount}
+        {newAmount} 
         </Typography>
       </CardContent>
       <CardActions>
         <Button
         variant='contained'
           size="small"
-          //onClick={handleAboutClick}
+          onClick={handleUpdateAmount}
         >
-          + Bet {props.betType}
+          + Bet 
         </Button>
       </CardActions>
     </Card>

@@ -1,7 +1,4 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
@@ -26,20 +23,19 @@ export default function BettingArea(props: MediaProps) {
         console.log(amount);
     };
 
-    const parentFunction = () => {
-        console.log("Function in parent component is called!");
-        // You can perform any actions you need in this function
+    const updateAmount = (amount: number) => {
+        console.log("PARENT!!!");
+        setAmount(amount);
     };
 
-    const [data, setData] = useState<string | null>(null);
     return (
         <>
             <Grid container spacing={1}>
                 <Grid item lg={6} md={6} xs={6}>
-                    <BettingCard betType='MERON' totalBet={props.walaTotalBet} payout={props.walaPayout} betAmount={amount} />
+                    <BettingCard amount={amount} onUpdateAmount={updateAmount} betType={'MERON'} totalBet={344} payout={3543} />
                 </Grid>
                 <Grid item lg={6} md={6} xs={6}>
-                    <BettingCard betType='WALA' totalBet={props.meronTotalBet} payout={props.meronPayout} betAmount={amount} />
+                <BettingCard amount={amount} onUpdateAmount={updateAmount} betType={'WALA'} totalBet={6654} payout={54311} />
                 </Grid>
                 <Grid item lg={12} md={6} xs={12}>
                     <TextField
