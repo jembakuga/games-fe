@@ -11,10 +11,11 @@ export interface ChildProps {
   betType: string;
   totalBet: number;
   payout: number;
-  onUpdateAmount: (newMessage: number) => void;
+  type: number;
+  onUpdateAmount: (newMessage: number, type: number) => void;
 }
 
-export default function BettingCard({ amount, onUpdateAmount, betType, totalBet, payout }: ChildProps) {
+export default function BettingCard({ amount, onUpdateAmount, betType, totalBet, payout, type }: ChildProps) {
 
   const [newAmount, setNewAmount] = useState(0);
 
@@ -41,7 +42,7 @@ export default function BettingCard({ amount, onUpdateAmount, betType, totalBet,
   }, []);
 
   const handleUpdateAmount = () => {
-    onUpdateAmount(amount);
+    onUpdateAmount(amount, type);
     setNewAmount(amount);
     //setAmount(''); // Clear the input field after updating the message
   };

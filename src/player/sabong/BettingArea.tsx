@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import { Grid, TextField } from '@mui/material';
 import BettingCard from './BettingCard';
+import axios from 'axios';
 
 export interface MediaProps {
     betType: string;
@@ -16,15 +17,30 @@ export interface MediaProps {
 
 export default function BettingArea(props: MediaProps) {
 
+    const [walaAmount, setWalaAmount] = useState(0);
+    const [meronAmount, setMeronAmount] = useState(0);
     const [amount, setAmount] = useState(0);
 
     const handleClick = (newValue: number) => {
         setAmount(newValue);
+        setMeronAmount(newValue);
+        setWalaAmount(newValue);
         console.log(amount);
     };
 
-    const updateAmount = (amount: number) => {
-        console.log("PARENT!!!");
+    const updateAmount = (amount: number, type: number) => {
+        console.log("PARENT!!!", amount, type);
+        axios
+            .post("http://localhost:8080/bet/placeBet", {
+                playerId: 1,
+                amount: amount,
+                betOn: type == 1 ? "MERON" : "WALA",
+                type: 1
+            })
+            .then((res) => {
+                console.log(res.data.result);
+
+            });
         setAmount(amount);
     };
 
@@ -32,10 +48,10 @@ export default function BettingArea(props: MediaProps) {
         <>
             <Grid container spacing={1}>
                 <Grid item lg={6} md={6} xs={6}>
-                    <BettingCard amount={amount} onUpdateAmount={updateAmount} betType={'MERON'} totalBet={344} payout={3543} />
+                    <BettingCard amount={meronAmount} onUpdateAmount={updateAmount} betType={'MERON'} totalBet={344} payout={3543} type={1} />
                 </Grid>
                 <Grid item lg={6} md={6} xs={6}>
-                <BettingCard amount={amount} onUpdateAmount={updateAmount} betType={'WALA'} totalBet={6654} payout={54311} />
+                    <BettingCard amount={walaAmount} onUpdateAmount={updateAmount} betType={'WALA'} totalBet={6654} payout={54311} type={2} />
                 </Grid>
                 <Grid item lg={12} md={6} xs={12}>
                     <TextField
