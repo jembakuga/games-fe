@@ -12,25 +12,25 @@ const ToolbarComponent = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           My App
         </Typography>
-        <Button color="inherit" component={Link} to="/sabong">
+        <Button color="inherit" component={Link} to="/playerboard/sabong">
           Sabong1
         </Button>
-        <Button color="inherit" component={Link} to="/ec2">
+        <Button color="inherit" component={Link} to="/playerboard/ec2">
           Ec22
         </Button>
-        <Button color="inherit" component={Link} to="/lotto3D">
+        <Button color="inherit" component={Link} to="/playerboard/lotto3D">
           3D Lotto3
         </Button>
-        <Button color="inherit" component={Link} to="/lotto3D">
+        <Button color="inherit" component={Link} to="/playerboard/lotto3D">
           Pick3
         </Button>
-        <Button color="inherit" component={Link} to="/lotto3D">
+        <Button color="inherit" component={Link} to="/playerboard/lotto3D">
           Game Ending
         </Button>
-        <Button color="inherit" component={Link} to="/lotto3D">
+        <Button color="inherit" component={Link} to="/playerboard/lotto3D">
           Bets
         </Button>
-        <Button color="inherit" component={Link} to="/lotto3D">
+        <Button color="inherit" component={Link} to="/playerboard/lotto3D">
           Cash In/Out History
         </Button>
       </Toolbar>

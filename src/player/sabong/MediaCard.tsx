@@ -16,7 +16,7 @@ export default function MediaCard(props: MediaProps) {
 
   const navigate = useNavigate();
   const handleAboutClick = () => {    
-    let url = '/sabongArena/' + props.title
+    let url = '/playerboard/sabongArena/' + props.title
     navigate(url);
   };
   return (

@@ -29,7 +29,7 @@ const appRoutes: RouteType[] = [
     state: "landingpage"
   },
   {
-    path: "/home",
+    path: "/agentboard/home",
     element: <DashboardPageLayout />,
     state: "home",
     sidebarProps: {
@@ -43,7 +43,7 @@ const appRoutes: RouteType[] = [
         state: "home.index"
       },
       {
-        path: "/home/dashboard",
+        path: "/agentboard/home/dashboard",
         element: <Dashboard />,
         state: "home.dashboard",
         sidebarProps: {
@@ -51,7 +51,7 @@ const appRoutes: RouteType[] = [
         },
       },
       {
-        path: "/home/totalSummaryReport",
+        path: "/agentboard/home/totalSummaryReport",
         element: <TotalSummaryReport />,
         state: "home.totalSummaryReport",
         sidebarProps: {
@@ -61,7 +61,7 @@ const appRoutes: RouteType[] = [
     ]
   },
   {
-    path: "/wallet",
+    path: "/agentboard/wallet",
     element: <WalletPageLayout />,
     state: "wallet",
     sidebarProps: {
@@ -70,7 +70,7 @@ const appRoutes: RouteType[] = [
     },
     child: [
       {
-        path: "/wallet/station",
+        path: "/agentboard/wallet/station",
         element: <WalletStation />,
         state: "wallet.station",
         sidebarProps: {
@@ -78,7 +78,7 @@ const appRoutes: RouteType[] = [
         },
       },
       {
-        path: "/wallet/logs",
+        path: "/agentboard/wallet/logs",
         element: <WalletLogs />,
         state: "wallet.logs",
         sidebarProps: {
@@ -88,7 +88,7 @@ const appRoutes: RouteType[] = [
     ]
   },
   {
-    path: "/commission",
+    path: "/agentboard/commission",
     element: <CommissionPageLayout />,
     state: "commission",
     sidebarProps: {
@@ -97,7 +97,7 @@ const appRoutes: RouteType[] = [
     },
     child: [
       {
-        path: "/commission/self",
+        path: "/agentboard/commission/self",
         element: <SelfConvert />,
         state: "commission.self",
         sidebarProps: {
@@ -105,7 +105,7 @@ const appRoutes: RouteType[] = [
         },
       },
       {
-        path: "/commission/logs",
+        path: "/agentboard/commission/logs",
         element: <CommissionLogs />,
         state: "commission.logs",
         sidebarProps: {
@@ -115,7 +115,7 @@ const appRoutes: RouteType[] = [
     ]
   },
   {
-    path: "/player",
+    path: "/agentboard/player",
     element: <PlayerPageLayout />,
     state: "player",
     sidebarProps: {
@@ -124,7 +124,7 @@ const appRoutes: RouteType[] = [
     },
     child: [
       {
-        path: "/player/active",
+        path: "/agentboard/player/active",
         element: <Active />,
         state: "player.active", 
         sidebarProps: {
@@ -132,7 +132,7 @@ const appRoutes: RouteType[] = [
         },
       },
       {
-        path: "/player/approval",
+        path: "/agentboard/player/approval",
         element: <Approval />,
         state: "player.approval",
         sidebarProps: {
@@ -142,7 +142,7 @@ const appRoutes: RouteType[] = [
     ]
   },
   {
-    path: "/subadmin",
+    path: "/agentboard/subadmin",
     element: <SubAdmin />,
     state: "changelog",
     sidebarProps: {
@@ -151,7 +151,7 @@ const appRoutes: RouteType[] = [
     }
   },
   {
-    path: "/changepassword",
+    path: "/agentboard/changepassword",
     element: <SubAdmin />,
     state: "changelog",
     sidebarProps: {
@@ -160,7 +160,7 @@ const appRoutes: RouteType[] = [
     }
   },
   {
-    path: "/logout",
+    path: "/agentboard/logout",
     element: <SubAdmin />,
     state: "changelog",
     sidebarProps: {
