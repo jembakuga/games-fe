@@ -20,6 +20,12 @@ export default function BettingArea(props: MediaProps) {
     const [walaAmount, setWalaAmount] = useState(0);
     const [meronAmount, setMeronAmount] = useState(0);
     const [amount, setAmount] = useState(0);
+    const token = localStorage.getItem('token');
+
+    // Set the Authorization header in the Axios request
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    };
 
     const handleClick = (newValue: number) => {
         setAmount(newValue);
@@ -36,7 +42,7 @@ export default function BettingArea(props: MediaProps) {
                 amount: amount,
                 betOn: type == 1 ? "MERON" : "WALA",
                 type: 1
-            })
+            }, {headers})
             .then((res) => {
                 console.log(res.data.result);
 

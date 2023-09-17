@@ -12,7 +12,16 @@ interface Data {
   createdDate: string;
 }
 
+
+const token = localStorage.getItem('token');
+
+// Set the Authorization header in the Axios request
+const headers = {
+  Authorization: `Bearer ${token}`,
+};
+
 const renderButtonCell = (params: { row: any; }) => {
+  console.log("token", token)
   return (
 
     <Button variant="contained" onClick={() => handleButtonClick(params.row)}>Approve</Button>
@@ -25,7 +34,7 @@ const handleButtonClick = async (row: any) => {
   axios
     .post("http://localhost:8080/player/approvePlayer", {
       id: row.id,
-    })
+    }, {headers})
     .then((res) => {
       console.log(res.data.result);
 
@@ -36,6 +45,7 @@ const Approval = (props: Props) => {
 
   const [players, setPlayers] = useState<Data[]>([]);
 
+
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 50 },
     { field: 'name', headerName: 'Name' },
@@ -44,12 +54,6 @@ const Approval = (props: Props) => {
     { field: 'button', headerName: 'Action', width: 150, renderCell: renderButtonCell },
   ];
 
-  const token = localStorage.getItem('token');
-
-  // Set the Authorization header in the Axios request
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
 
 
   useEffect(() => {

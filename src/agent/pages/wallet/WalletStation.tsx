@@ -77,7 +77,7 @@ const WalletStation = (props: Props) => {
         amount: amount,
         details: details,
         type: selectedTransactionType
-      })
+      }, {headers})
       .then((res) => {
         console.log(res.data.data);
         if (!res.data.data.success) {
