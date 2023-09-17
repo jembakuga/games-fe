@@ -8,6 +8,9 @@ type Props = {};
 
 const SabongMain = (props: Props) => {
 
+  const token = localStorage.getItem('token');
+  console.log("TOKEN!", token)
+
   const [games, setGames] = useState([{ key: '1', label: 'test1', url: 'https://ohtanga1.b-cdn.net/LiveApp/streams/master.m3u8' }, { key: '2', label: 'test2', url: 'https://ohtanga1.b-cdn.net/LiveApp/streams/master.m3u8' }]);
 
   return (

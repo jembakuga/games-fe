@@ -44,10 +44,17 @@ const Approval = (props: Props) => {
     { field: 'button', headerName: 'Action', width: 150, renderCell: renderButtonCell },
   ];
 
+  const token = localStorage.getItem('token');
+
+  // Set the Authorization header in the Axios request
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/player/loadApprovalPlayers/1/0/2")
+      .get("http://localhost:8080/player/loadApprovalPlayers/0/2", {headers})
       .then((res) => {
         console.log(res.data.success);
         if(res.data.success){

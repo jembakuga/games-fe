@@ -26,6 +26,12 @@ const Logs = (props: Props) => {
   const [loading, setLoading] = React.useState(false);
   const [rowSelectionModel, setRowSelectionModel] =
     React.useState<GridRowSelectionModel>([]);
+  const token = localStorage.getItem('token');
+
+  // Set the Authorization header in the Axios request
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 50 },
@@ -50,7 +56,7 @@ const Logs = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/wallet/findWalletTxnListByAgent/1/${paginationModel.page}/${paginationModel.pageSize}`)
+      .get(`http://localhost:8080/wallet/findWalletTxnListByAgent/${paginationModel.page}/${paginationModel.pageSize}`, {headers})
       .then((res) => {
         console.log(res.data);
         setData(res.data.data);
@@ -81,11 +87,11 @@ const Logs = (props: Props) => {
           rowSelectionModel={rowSelectionModel}
           loading={loading}
           keepNonExistentRowsSelected
-          /*initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}*/
+        /*initialState={{
+          pagination: {
+            paginationModel: { page: 0, pageSize: 5 },
+          },
+        }}*/
         />
 
 

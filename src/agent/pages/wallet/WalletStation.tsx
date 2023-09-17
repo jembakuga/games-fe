@@ -23,27 +23,50 @@ const WalletStation = (props: Props) => {
   const [selectedPlayer, setSelectedPlayer] = useState<string>('');
   const [players, setPlayers] = useState([{ key: '', label: '' }]);
 
+  const token = localStorage.getItem('token');
+  
+  // Set the Authorization header in the Axios request
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
   const playerList = [
     { value: '', label: '' }
   ];
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/home/loadDashBoard/1")
-      .then((res) => {
-        //console.log(res.data);
-        setWalletPoint(res.data.data.walletPoints);
-      });
+    console.log("token", token)
+    
 
     axios
-      .get("http://localhost:8080/player/findAgentPlayers/1")
+      .get("http://localhost:8080/player/findAgentPlayers", {headers})
       .then((res) => {
-        setPlayers(res.data.data);
-        for (var i = 0; i < res.data.data.length; i++) {
-          console.log("i");
-          playerList.push({ value: res.data.data[i].key, label: res.data.data[i].label })
+        console.log(res.data.success)
+        if(res.data.success){
+          setPlayers(res.data.data);
+          console.log(res.data.data)
+          for (var i = 0; i < res.data.data.length; i++) {
+            console.log("i");
+            playerList.push({ value: res.data.data[i].key, label: res.data.data[i].label })
+          }
+        }else{
+          console.log(res.data.data.message)
         }
-        //
+        
+      }).catch(error => {
+        console.log("ERRORR")
+        setOpen(true);
+        console.error('Error:', error);
+      });
+
+      axios
+      .get("http://localhost:8080/home/loadDashBoard", {headers})
+      .then((res) => {
+        setWalletPoint(res.data.data.walletPoints);
+      }).catch(error => {
+        console.log("ERRORR")
+        setOpen(true);
+        console.error('Error:', error);
       });
   }, [])
 
@@ -56,9 +79,9 @@ const WalletStation = (props: Props) => {
         type: selectedTransactionType
       })
       .then((res) => {
-        console.log(res.data);
-        if (!res.data.success) {
-          setMessage(res.data.message);
+        console.log(res.data.data);
+        if (!res.data.data.success) {
+          setMessage(res.data.data.message);
         } else {
           setMessage("Load done");
         }

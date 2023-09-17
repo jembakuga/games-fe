@@ -20,6 +20,12 @@ interface Data {
 const Active = (props: Props) => {
 
   const [players, setPlayers] = useState<Data[]>([]);
+  const token = localStorage.getItem('token');
+
+  // Set the Authorization header in the Axios request
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 50 },
@@ -46,7 +52,7 @@ const Active = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/player/findPaginatedAgentPlayers/1/0/11")
+      .get("http://localhost:8080/player/findPaginatedAgentPlayers/0/11", {headers})
       .then((res) => {
         console.log(res.data.data);
         setPlayers(res.data.data);

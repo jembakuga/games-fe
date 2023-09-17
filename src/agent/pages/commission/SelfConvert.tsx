@@ -22,18 +22,23 @@ const SelfConvert = (props: Props) => {
 
   const [sabongComm, setSabongComm] = useState(0);
   const [totalPoints, setTotalPoints] = useState(0);
+  const token = localStorage.getItem('token');
+  
+  // Set the Authorization header in the Axios request
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
 
   const rows = [
     createData(1, '01/01/2023', 'richard', 'withdraw', 100, 'movement', 400),
     createData(2, '01/01/2023', 'arman', 'withdraw', 100, 'movement', 11500),
     createData(3, '01/01/2023', 'aj', 'withdraw', 100, 'movement', 6500),
   ];
-
   
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/home/loadDashBoard/1")
+      .get("http://localhost:8080/home/loadDashBoard", {headers})
       .then((res) => {
         console.log(res.data);
         setSabongComm(res.data.data.sabongCurrentCommission);

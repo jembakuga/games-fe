@@ -22,9 +22,19 @@ const Dashboard = (props: Props) => {
   const [pick3CurrentCommission, setPick3CurrentCommission] = useState(0);
   const [gameEndingCurrentCommission, setGameEndingCurrentCommission] = useState(0);
 
+
+  const token = localStorage.getItem('token');
+
+  // Set the Authorization header in the Axios request
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
   useEffect(() => {
+    console.log("token", token)
+    console.log("headers", headers)
     axios
-      .get("http://localhost:8080/home/loadDashBoard/1")
+      .get("http://localhost:8080/home/loadDashBoard", {headers})
       .then((res) => {
         console.log(res.data);
         setSabongComm(res.data.data.sabongCurrentCommission);
@@ -46,7 +56,7 @@ const Dashboard = (props: Props) => {
         <Grid item lg={2} md={4} xs={12}><Lotto3DCommission lotto3DCommission={lotto3dCurrentCommission} /></Grid>
         <Grid item lg={2} md={4} xs={12}><Pick3Commission pick3Commission={pick3CurrentCommission} /></Grid>
         <Grid item lg={3} md={5} xs={12}><GameEndingCommission gameEndingCommission={gameEndingCurrentCommission} /></Grid>
-        
+
         <Grid item lg={12} md={12} xs={12}><ReferraLink /></Grid>
         <Grid item lg={3} md={4} xs={12}><WalletPoints walletPoints={walletPoints} /></Grid>
         <Grid item lg={3} md={4} xs={12}><TotalCommission totalCommission={totalComm} /></Grid>

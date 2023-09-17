@@ -7,18 +7,18 @@ import { routes } from "./agent/routes";
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/playerboard/*" element={<PlayerMain />} />
-        <Route path="/agentboard/" element={<MainLayout />}>
-          {routes}
-        </Route>
-        
-        {/* Add more routes for other pages */}
-      </Routes>
-    </Router>
-  );
+          <Router>
+        <Routes>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/playerboard/*" element={<PlayerMain />} />
+          <Route path="/agentboard/" element={<MainLayout />}>
+            {routes}
+          </Route>
+
+          {/* Add more routes for other pages */}
+        </Routes>
+      </Router>
+      );
 };
 
 export default App;

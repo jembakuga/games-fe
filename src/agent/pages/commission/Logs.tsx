@@ -31,6 +31,13 @@ const Logs = (props: Props) => {
 
   const [sabong, setSabong] = useState<Data[]>([]);
   const [others, setOthers] = useState<Data[]>([]);
+  const token = localStorage.getItem('token');
+  
+  // Set the Authorization header in the Axios request
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 200 },
@@ -53,7 +60,7 @@ const Logs = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/commission/loadLogs/1/0/320")
+      .get("http://localhost:8080/commission/loadLogs/0/1000", {headers})
       .then((res) => {
         console.log(res.data);
         setSabong(res.data.data.sabong);
