@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export interface ChildProps {
   amount: number;
@@ -18,12 +19,25 @@ export interface ChildProps {
 export default function BettingCard({ amount, onUpdateAmount, betType, totalBet, payout, type }: ChildProps) {
 
   const [newAmount, setNewAmount] = useState(0);
+  const token = localStorage.getItem('token');
+  const [totBet, setTotBet] = useState(0);
+
+  // Set the Authorization header in the Axios request
+  const headers = {
+      Authorization: `Bearer ${token}`,
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //const response = await fetch('http://localhost:8080/home/loadRoomSummary');
+        //const response = await fetch('http://localhost:8080/bet/loadTotalBet');
         //const result = await response.text();
+        axios
+            .get("http://localhost:8080/bet/loadTotalBet/1", {headers})
+            .then((res) => {
+                console.log(res.data.totalBet);
+                setTotBet(res.data.totalBet);
+            });
         console.log("test");
         //setData(result);
       } catch (error) {
@@ -55,10 +69,10 @@ export default function BettingCard({ amount, onUpdateAmount, betType, totalBet,
         {betType}
         </Typography>
         <Typography variant="h4" color="text.secondary">
-        {totalBet}
+        {totBet}
         </Typography>
         <Typography variant="h4" color="text.secondary">
-        {payout}
+        Payout = {payout}
         </Typography>
         <Typography variant="h4" color="text.secondary">
         {newAmount} 

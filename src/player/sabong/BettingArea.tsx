@@ -75,7 +75,7 @@ export default function BettingArea(props: MediaProps) {
                     />
                 </Grid>
                 <Grid item lg={1} xs={2}>
-                    <Button variant='contained' size="small" onClick={(event) => handleClick(100)}
+                    <Button variant='contained' size="small" onClick={(event) => handleClick(50)}
                     >50</Button>
                 </Grid>
                 <Grid item lg={1} xs={2}>

@@ -4,10 +4,29 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer';
 import BettingArea from './BettingArea';
+import axios from 'axios';
 
 const SabongArena = () => {
   const { title, url } = useParams();
   console.log(title, url)
+  const [walletPoints, setWalletPoints] = useState(0);
+  const token = localStorage.getItem('token');
+
+  // Set the Authorization header in the Axios request
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
+  React.useEffect(() => {
+    console.log("token", token)
+    console.log("headers", headers)
+    axios
+      .get("http://localhost:8080/home/loadDashBoard", { headers })
+      .then((res) => {
+        console.log(res.data);
+        setWalletPoints(res.data.data.walletPoints);
+      });
+  }, [])
   
   return (
     <Grid container spacing={1} sx={{ borderLeft: '10px solid #e0e0e0' }}>
@@ -19,7 +38,7 @@ const SabongArena = () => {
       </Grid>
       <Grid item lg={6} md={12} xs={12}>
         <Typography gutterBottom variant="h6" component="div">
-          Balance {title}
+          Balance {walletPoints}
         </Typography>
       </Grid>
       <Grid item lg={6} md={6} xs={12}>

@@ -27,7 +27,7 @@ const LoginForm = () => {
       if(res.data.userType === 'ROLE_ADMIN'){
         navigate('/agentboard');
       }else if(res.data.userType === 'ROLE_USER'){
-        navigate('/playerboard');
+        navigate('/playerboard/sabong');
       }
     })
     .catch(error => {
