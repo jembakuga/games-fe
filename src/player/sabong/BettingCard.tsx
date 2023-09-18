@@ -30,13 +30,12 @@ export default function BettingCard({ amount, onUpdateAmount, betType, totalBet,
   useEffect(() => {
     const fetchData = async () => {
       try {
-        //const response = await fetch('http://localhost:8080/bet/loadTotalBet');
-        //const result = await response.text();
+        console.log(type, betType)
         axios
-          .get("http://localhost:8080/bet/loadTotalBet/1", { headers })
+          .get(`http://localhost:8080/bet/loadTotalBet/${type}/${betType}`, { headers })
           .then((res) => {
-            console.log(res.data.totalBet);
-            setTotBet(res.data.totalBet);
+            console.log(res.data.totalBets);
+            setTotBet(res.data.totalBets);
           });
         console.log("test");
         //setData(result);

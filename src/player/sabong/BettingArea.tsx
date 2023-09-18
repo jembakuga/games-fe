@@ -68,7 +68,7 @@ export default function BettingArea(props: MediaProps) {
                     <BettingCard amount={meronAmount} onUpdateAmount={updateAmount} betType={'MERON'} totalBet={344} payout={3543} type={1} />
                 </Grid>
                 <Grid item lg={6} md={6} xs={6}>
-                    <BettingCard amount={walaAmount} onUpdateAmount={updateAmount} betType={'WALA'} totalBet={6654} payout={54311} type={2} />
+                    <BettingCard amount={walaAmount} onUpdateAmount={updateAmount} betType={'WALA'} totalBet={6654} payout={54311} type={1} />
                 </Grid>
                 <Grid item lg={12} md={6} xs={12}>
                     <TextField
