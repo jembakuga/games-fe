@@ -29,15 +29,15 @@ const Active = (props: Props) => {
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 50 },
-    { field: 'name', headerName: 'Name' },
-    { field: 'username', headerName: 'UserName' },
-    { field: 'walletPoints', headerName: 'Wallet Points', type: 'number' },
-    { field: 'sabongCurrentCommission', headerName: 'Sabong', type: 'number' },
-    { field: 'ez2CurrentCommission', headerName: 'Ez2', type: 'number' },
-    { field: 'lotto3dCurrentCommission', headerName: 'Lotto 3D', type: 'number'},
-    { field: 'pick3CurrentCommission', headerName: 'Pick3', type: 'number'},
-    { field: 'gameEndingCurrentCommission', headerName: 'Game Ending',type: 'number'},
-    { field: 'createdDate', headerName: 'Registered Date', width:200},
+    { field: 'name', headerName: 'Name', width: 150 },
+    { field: 'username', headerName: 'UserName', width: 150 },
+    { field: 'walletPoints', headerName: 'Wallet Points', type: 'number', width: 100 },
+    { field: 'sabongCurrentCommission', headerName: 'Sabong', type: 'number', width: 120 },
+    { field: 'ez2CurrentCommission', headerName: 'Ez2', type: 'number', width: 120 },
+    { field: 'lotto3dCurrentCommission', headerName: 'Lotto 3D', type: 'number', width: 120},
+    { field: 'pick3CurrentCommission', headerName: 'Pick3', type: 'number', width: 120},
+    { field: 'gameEndingCurrentCommission', headerName: 'Game Ending',type: 'number', width: 120},
+    { field: 'createdDateStr', headerName: 'Registered Date', width:200},
     /*
     {
       field: 'fullName',

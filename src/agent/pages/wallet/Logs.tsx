@@ -35,13 +35,13 @@ const Logs = (props: Props) => {
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 50 },
-    { field: 'createdDate', headerName: 'Log Date', width: 200 },
+    { field: 'createdDateStr', headerName: 'Log Date', width: 200 },
     { field: 'loadToName', headerName: 'Loaded To', width: 200 },
     { field: 'transactedByName', headerName: 'Transacted By', width: 200 },
     { field: 'type', headerName: 'Transaction Type', width: 200 },
-    { field: 'amount', headerName: 'Amount', type: 'number', width: 200 },
-    { field: 'transactionMovement', headerName: 'Transaction Movement', width: 200 },
-    { field: 'balance', headerName: 'Balance', width: 200 },/*
+    { field: 'amount', headerName: 'Amount', type: 'number', width: 100 },
+    { field: 'transactionMovement', headerName: 'Txn Movement', width: 150 }/*,
+    { field: 'balance', headerName: 'Balance', width: 80 }
     { field: 'button', headerName: 'Action', width: 150, renderCell: renderButtonCell },
     {
       field: 'fullName',

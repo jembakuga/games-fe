@@ -43,9 +43,10 @@ const Logs = (props: Props) => {
     { field: 'id', headerName: 'ID', width: 200 },
     { field: 'event', headerName: 'Event', width: 200 },
     { field: 'fightNo', headerName: 'Fight Number', width: 200 },
-    { field: 'from', headerName: 'From', width: 200 },
-    { field: 'amount', headerName: 'Amount', type: 'number', width: 200 },
-    { field: 'button', headerName: 'Action', width: 150, renderCell: renderButtonCell },/*
+    { field: 'from', headerName: 'From', width: 100 },
+    { field: 'amount', headerName: 'Amount', type: 'number', width: 150 },
+    { field: 'createdDateStr', headerName: 'Date', type: 'number', width: 200 }/*,
+    { field: 'button', headerName: 'Action', width: 150, renderCell: renderButtonCell },
     {
       field: 'fullName',
       headerName: 'Full name',
