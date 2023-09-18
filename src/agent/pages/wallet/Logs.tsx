@@ -40,18 +40,7 @@ const Logs = (props: Props) => {
     { field: 'transactedByName', headerName: 'Transacted By', width: 200 },
     { field: 'type', headerName: 'Transaction Type', width: 200 },
     { field: 'amount', headerName: 'Amount', type: 'number', width: 100 },
-    { field: 'transactionMovement', headerName: 'Txn Movement', width: 150 }/*,
-    { field: 'balance', headerName: 'Balance', width: 80 }
-    { field: 'button', headerName: 'Action', width: 150, renderCell: renderButtonCell },
-    {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 160,
-      valueGetter: (params: GridValueGetterParams) =>
-        `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    },*/
+    { field: 'transactionMovement', headerName: 'Txn Movement', width: 150 }
   ];
 
   useEffect(() => {

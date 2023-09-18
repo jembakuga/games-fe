@@ -24,7 +24,7 @@ export default function BettingCard({ amount, onUpdateAmount, betType, totalBet,
 
   // Set the Authorization header in the Axios request
   const headers = {
-      Authorization: `Bearer ${token}`,
+    Authorization: `Bearer ${token}`,
   };
 
   useEffect(() => {
@@ -33,11 +33,11 @@ export default function BettingCard({ amount, onUpdateAmount, betType, totalBet,
         //const response = await fetch('http://localhost:8080/bet/loadTotalBet');
         //const result = await response.text();
         axios
-            .get("http://localhost:8080/bet/loadTotalBet/1", {headers})
-            .then((res) => {
-                console.log(res.data.totalBet);
-                setTotBet(res.data.totalBet);
-            });
+          .get("http://localhost:8080/bet/loadTotalBet/1", { headers })
+          .then((res) => {
+            console.log(res.data.totalBet);
+            setTotBet(res.data.totalBet);
+          });
         console.log("test");
         //setData(result);
       } catch (error) {
@@ -60,31 +60,31 @@ export default function BettingCard({ amount, onUpdateAmount, betType, totalBet,
     setNewAmount(amount);
     //setAmount(''); // Clear the input field after updating the message
   };
-  
+
 
   return (
     <Card sx={{ maxWidth: 400 }}>
       <CardContent>
         <Typography gutterBottom variant="h4" component="div">
-        {betType}
+          {betType}
         </Typography>
         <Typography variant="h4" color="text.secondary">
-        {totBet}
+          {totBet}
         </Typography>
         <Typography variant="h4" color="text.secondary">
-        Payout = {payout}
+          Payout = {payout}
         </Typography>
         <Typography variant="h4" color="text.secondary">
-        {newAmount} 
+          {newAmount}
         </Typography>
       </CardContent>
       <CardActions>
         <Button
-        variant='contained'
+          variant='contained'
           size="small"
           onClick={handleUpdateAmount}
         >
-          + Bet 
+          + Bet
         </Button>
       </CardActions>
     </Card>

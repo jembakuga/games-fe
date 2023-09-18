@@ -13,7 +13,9 @@ export interface MediaProps {
     walaPayout: number;
     meronPayout: number;
     betAmount: number;
+    onBet: (balance: number) => void;
 }
+
 
 export default function BettingArea(props: MediaProps) {
 
@@ -44,10 +46,19 @@ export default function BettingArea(props: MediaProps) {
                 type: 1
             }, {headers})
             .then((res) => {
-                console.log(res.data.result);
-
-            });
+                console.log(res.data);
+                if(res.data.success == true){
+                    props.onBet(res.data.data.walletPoints);
+                }else{
+                    console.log(res.data.message)
+                }
+                
+            }).catch(error => {
+                console.log("ERRORR")
+                console.error('Error:', error);
+              });
         setAmount(amount);
+        
     };
 
     return (

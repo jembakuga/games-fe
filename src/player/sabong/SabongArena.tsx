@@ -12,6 +12,10 @@ const SabongArena = () => {
   const [walletPoints, setWalletPoints] = useState(0);
   const token = localStorage.getItem('token');
 
+  const updateBalance = (balance : number) => {
+    setWalletPoints(balance);
+  }
+
   // Set the Authorization header in the Axios request
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -45,7 +49,7 @@ const SabongArena = () => {
         <VideoPlayer m3u8Url="testste" />
       </Grid>
       <Grid item lg={6} md={6} xs={12}>
-        <BettingArea betType={'100'} walaTotalBet={123} walaPayout={32} meronTotalBet={444} meronPayout={788} betAmount={0} />
+        <BettingArea onBet={updateBalance} betType={'100'} walaTotalBet={123} walaPayout={32} meronTotalBet={444} meronPayout={788} betAmount={0} />
         </Grid>
     </Grid>
   );

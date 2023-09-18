@@ -28,6 +28,8 @@ const LoginForm = () => {
         navigate('/agentboard');
       }else if(res.data.userType === 'ROLE_USER'){
         navigate('/playerboard/sabong');
+      }else if(res.data.userType === 'ROLE_GC'){
+        navigate('/gcboard');
       }
     })
     .catch(error => {
