@@ -36,14 +36,14 @@ export default function BettingArea(props: MediaProps) {
         console.log(amount);
     };
 
-    const updateAmount = (amount: number, type: number) => {
+    const updateAmount = (amount: number, type: number, betOn: string) => {
         console.log("PARENT!!!", amount, type);
         axios
             .post("http://localhost:8080/bet/placeBet", {
                 playerId: 1,
                 amount: amount,
-                betOn: type == 1 ? "MERON" : "WALA",
-                type: 1
+                betOn: betOn,
+                type: type
             }, {headers})
             .then((res) => {
                 console.log(res.data);

@@ -10,7 +10,7 @@ import LoginPage from './common/LoginPage';
 
 const App: React.FC = () => {
   return (
-    <Router>
+      <Router>
       <Routes>
         <Route path="/login" element={<LoginForm />} />
         <Route path="/loginPage" element={<LoginPage />} />
@@ -23,6 +23,8 @@ const App: React.FC = () => {
         {/* Add more routes for other pages */}
       </Routes>
     </Router>
+    
+    
   );
 };
 

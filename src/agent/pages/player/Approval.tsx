@@ -58,7 +58,7 @@ const Approval = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/player/loadApprovalPlayers/0/2", {headers})
+      .get("http://localhost:8080/player/loadApprovalPlayers/0/1000", {headers})
       .then((res) => {
         console.log(res.data.success);
         if(res.data.success){

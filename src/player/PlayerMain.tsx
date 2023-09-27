@@ -5,12 +5,12 @@ import ToolbarComponent from './common/ToolbarComponent';
 import Lotto3DMain from './lotto3d/Lotto3DMain';
 import Ec2Main from './ec2/Ec2GameMain';
 import SabongArena from './sabong/SabongArena';
-
+import Navbar from './common/Navbar';
 
 const PlayerMain = () => {
   return (
     <>
-      <ToolbarComponent />
+      <Navbar />
       <Routes>
         <Route path="/sabong" element={<SabongMain />} />
         <Route path="/ec2" element={<Ec2Main />} />

@@ -29,12 +29,9 @@ interface Data {
 const UpdateGame = (props: Props) => {
   const { kind, url } = useParams();
   const [selectedGameType, setSelectedGameType] = useState<string>('');
-  const [gameNo, setGameNo] = useState('');
-  const [eventName, setEventName] = useState('');
   const [data, setData] = useState<Data[]>([]);
   const [loading, setLoading] = React.useState(false);
   const [title, setTitle] = useState('')
-  const [gameStatus, setGameStatus] = useState(0)
   const [open, setOpen] = React.useState(false);
   const [gameId, setGameId] = useState(0);
   const [gameWinner, setGameWinner] = useState('');
@@ -52,11 +49,11 @@ const UpdateGame = (props: Props) => {
 
   const renderButtonCell = (params: { row: any; }) => {
     console.log("row", params.row)
-    if (params.row.status == 1 && kind == "1") {
+    if (params.row.status === 1 && kind === "1") {
       return (
         <Button variant="contained" onClick={() => handleCloseBet(params.row)}>Close Betting</Button>
       );
-    } else if (params.row.status == 2 && kind == "2") {
+    } else if (params.row.status === 2 && kind === "2") {
       return (
         <Button variant="contained" onClick={() => handleClickOpen(params.row)}>Declare Winner</Button>
       );
@@ -113,7 +110,7 @@ const UpdateGame = (props: Props) => {
 
   React.useEffect(() => {
     console.log("kind", kind)
-    if (kind == "1") {
+    if (kind === "1") {
       setTitle("Close Betting")
     } else {
       setTitle("Declare Winner")

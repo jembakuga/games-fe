@@ -1,11 +1,6 @@
-import React from 'react';
-import Paper from '@mui/material/Paper';
-import TableContainer from '@mui/material/TableContainer';
-import Table from '@mui/material/Table';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import TableCell from '@mui/material/TableCell';
-import TableBody from '@mui/material/TableBody';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { DataGrid, GridColDef, GridRowSelectionModel } from '@mui/x-data-grid';
 
 type Props = {};
 
@@ -20,56 +15,79 @@ function createData(
   return { id, dateCreated, eventName, noOfFights, status, totalPlasada };
 }
 
+interface Data {
+  id: number,
+  gameNo: string,
+  eventName: string,
+  winner: string
+}
+
 const TotalSummaryReport = (props: Props) => {
 
-  const rows = [
-    createData(1, '01/01/2023', 'event 1', 11, 'open', 0.00),
-    createData(2, '01/01/2023', 'event 2', 3, 'open', 0.0),
-    createData(3, '01/01/2023', 'event 3', 32, 'open', 0.0),
-    createData(4, '01/01/2023', 'event 4', 4, 'open', 0.0),
-    createData(5, '01/01/2023', 'event 5', 13, 'open', 0.0),
+  const [loading, setLoading] = React.useState(false);
+  const [data, setData] = useState<Data[]>([]);
+  const token = localStorage.getItem('token');
+  const [paginationModel, setPaginationModel] = React.useState({
+    page: 0,
+    pageSize: 5,
+  });
+  const [rowSelectionModel, setRowSelectionModel] =
+  React.useState<GridRowSelectionModel>([]);
+
+  // Set the Authorization header in the Axios request
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+  
+  const columns: GridColDef[] = [
+    { field: 'id', headerName: 'ID', width: 50 },
+    { field: 'gameNo', headerName: 'Game Number', width: 200 },
+    { field: 'eventName', headerName: 'Event Name', width: 200 },
+    { field: 'winner', headerName: 'Winner', width: 100 }
   ];
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/home/loadRoomSummary`, { headers })
+      .then((resp) => {
+        console.log(resp.data.data);
+        setData(resp.data.data);
+      });
+  }, [])
 
   return (
     <>
-    <div>
-      <div className="header">Room Summary</div>
-    </div>
-    <br />
-    <div>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Date Created</TableCell>
-            <TableCell align="right">Event Name</TableCell>
-            <TableCell align="right"># of Fights</TableCell>
-            <TableCell align="right">Status</TableCell>
-            <TableCell align="right">Total Plasada</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.dateCreated}
-              </TableCell>
-              <TableCell align="right">{row.eventName}</TableCell>
-              <TableCell align="right">{row.noOfFights}</TableCell>
-              <TableCell align="right">{row.status}</TableCell>
-              <TableCell align="right">{row.totalPlasada}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+      <div>
+        <div className="header">Game Summary</div>
+      </div>
+      <br />
+      <div>
+        <DataGrid
+          rows={data}
+          columns={columns}
+          pagination
+          checkboxSelection
+          paginationModel={paginationModel}
+          pageSizeOptions={[5]}
+          rowCount={100}
+          paginationMode="server"
+          onPaginationModelChange={setPaginationModel}
+          onRowSelectionModelChange={(newRowSelectionModel) => {
+            setRowSelectionModel(newRowSelectionModel);
+          }}
+          rowSelectionModel={rowSelectionModel}
+          loading={loading}
+          keepNonExistentRowsSelected
+        /*initialState={{
+          pagination: {
+            paginationModel: { page: 0, pageSize: 5 },
+          },
+        }}*/
+        />
 
-    </div>
+      </div>
     </>
-    
+
   );
 };
 

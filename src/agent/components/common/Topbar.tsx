@@ -17,7 +17,7 @@ const Topbar = () => {
     >
       <Toolbar>
         <Typography variant="h6">
-          React sidebar with dropdown sdgdf
+          Local Game
         </Typography>
       </Toolbar>
     </AppBar>

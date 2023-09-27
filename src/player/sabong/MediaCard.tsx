@@ -23,7 +23,7 @@ export default function MediaCard(props: MediaProps) {
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
+        image="/img/COCK_FIGHT.JPG"
         title="green iguana"
       />
       <CardContent>

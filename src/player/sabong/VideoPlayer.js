@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import Hls from 'hls.js';
+import { Button } from '@mui/material';
+
 
 const VideoPlayer = ({ m3u8Url }) => {
   const videoRef = useRef(null);
@@ -24,8 +26,8 @@ const VideoPlayer = ({ m3u8Url }) => {
 
   return (
     <div>
-      <video ref={videoRef} controls width="800" height="400"></video><br />
-      <button onClick={playVideo}>Play Video</button>
+      <video ref={videoRef} controls width="100%" height="400"></video><br />
+      <Button variant="contained" onClick={playVideo}>Play Video</Button>
     </div>
   );
 };

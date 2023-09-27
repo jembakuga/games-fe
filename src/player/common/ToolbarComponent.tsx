@@ -10,7 +10,7 @@ const ToolbarComponent = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          My App
+         
         </Typography>
         <Button color="inherit" component={Link} to="/playerboard/sabong">
           Sabong1
