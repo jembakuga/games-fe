@@ -24,7 +24,7 @@ const LoginForm = () => {
         //setResult(`token: ${res.data.token}`)
         localStorage.setItem('token', res.data.token.token);
         if (res.data.userType === 'ROLE_ADMIN') {
-          navigate('/agentboard');
+          navigate('/myagentboard/landing');
         } else if (res.data.userType === 'ROLE_USER') {
           navigate('/playerboard/sabong');
         } else if (res.data.userType === 'ROLE_GC') {

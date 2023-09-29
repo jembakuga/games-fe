@@ -7,6 +7,7 @@ import { routes } from "./agent/routes";
 import GcMain from './gamecontroller/GcMain';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LoginPage from './common/LoginPage';
+import AgentMain from './myagent/AgentMain';
 
 const App: React.FC = () => {
   return (
@@ -16,9 +17,7 @@ const App: React.FC = () => {
         <Route path="/loginPage" element={<LoginPage />} />
         <Route path="/playerboard/*" element={<PlayerMain />} />
         <Route path="/gcboard/*" element={<GcMain />} />
-        <Route path="/agentboard/" element={<MainLayout />}>
-          {routes}
-        </Route>
+        <Route path="/myagentboard/*" element={<AgentMain />} />
 
         {/* Add more routes for other pages */}
       </Routes>
