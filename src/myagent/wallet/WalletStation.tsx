@@ -99,90 +99,89 @@ const WalletStation = (props: Props) => {
 
   return (
     <>
+
       <div className="card">
         <h3>
           <div className="card-header">Wallet Mangement</div>
         </h3>
         <div className="card-body">
-          <div className="container">
-            <div className="row">
+          <div className="row">
+            <div className="col">
               <WalletPoints walletPoints={walletPoints} />
             </div>
-            <br />
-            <div className="card-header">
-              <h5>Wallet Loading Station</h5>
+          </div>
+          <br />
+          <div className="card-header">
+            <h5>Wallet Loading Station</h5>
+          </div>
+          <div className="card-body">
+            <div className='row'>
+              <div className="col-sm-2">Select Transaction</div>
+              <div className='col-sm-10'>
+                <TextField
+                  select
+                  label="Select a transaction type"
+                  variant="outlined"
+                  fullWidth
+                  value={selectedTransactionType}
+                  onChange={(event) => {
+                    setSelectedTransactionType(event.target.value);
+                  }}
+                  margin="normal"
+                >
+                  {transactionTypes.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </div>
             </div>
-            <div className="card-body">
-              <div className="container">
-                <div className='row'>
-                  <div className="col-sm-2">Select Transaction</div>
-                  <div className='col-sm-10'>
-                    <TextField
-                      select
-                      label="Select a transaction type"
-                      variant="outlined"
-                      fullWidth
-                      value={selectedTransactionType}
-                      onChange={(event) => {
-                        setSelectedTransactionType(event.target.value);
-                      }}
-                      margin="normal"
-                    >
-                      {transactionTypes.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-sm-2">Amount</div>
-                  <div className="col-sm-10">
-                    <TextField
-                      id="amount"
-                      label="Amount"
-                      type="number"
-                      onChange={(event) => {
-                        console.log(event);
-                        setAmount(event.target.value);
-                      }}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className='row'>
-                  <div className="col-sm-2">Load To</div>
-                  <div className='col-sm-10'>
-                    <TextField
-                      id="player"
-                      select
-                      label="Select an agent/player"
-                      fullWidth
-                      value={selectedPlayer}
-                      onChange={(event) => {
-                        setSelectedPlayer(event.target.value);
-                      }}
-                      margin="normal"
-                    >
-                      {players.map((item) => (
-                        <MenuItem key={item.key} value={item.key}>
-                          {item.label}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </div>
-                </div>
-                <div className='row'>
-                  <div className='col-sm-1'>
-                    <Button variant="contained" onClick={handleSubmitClick}>Submit</Button>
-                  </div>
-                  <div className='col-sm-1'>
-                    <Button variant="contained">Cancel</Button>
-                  </div>
-                </div>
+            <div className="row">
+              <div className="col-sm-2">Amount</div>
+              <div className="col-sm-10">
+                <TextField
+                  id="amount"
+                  label="Amount"
+                  type="number"
+                  onChange={(event) => {
+                    console.log(event);
+                    setAmount(event.target.value);
+                  }}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </div>
+            </div>
+            <div className='row'>
+              <div className="col-sm-2">Load To</div>
+              <div className='col-sm-10'>
+                <TextField
+                  id="player"
+                  select
+                  label="Select an agent/player"
+                  fullWidth
+                  value={selectedPlayer}
+                  onChange={(event) => {
+                    setSelectedPlayer(event.target.value);
+                  }}
+                  margin="normal"
+                >
+                  {players.map((item) => (
+                    <MenuItem key={item.key} value={item.key}>
+                      {item.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              </div>
+            </div>
+            <div className='row'>
+              <div className='col-sm-1'>
+                <Button variant="contained" onClick={handleSubmitClick}>Submit</Button>
+              </div>
+              <div className='col-sm-1'>
+                <Button variant="contained">Cancel</Button>
               </div>
             </div>
           </div>

@@ -34,7 +34,7 @@ const handleButtonClick = async (row: any) => {
   axios
     .post("http://localhost:8080/player/approvePlayer", {
       id: row.id,
-    }, {headers})
+    }, { headers })
     .then((res) => {
       console.log(res.data.result);
 
@@ -58,32 +58,39 @@ const Approval = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/player/loadApprovalPlayers/0/1000", {headers})
+      .get("http://localhost:8080/player/loadApprovalPlayers/0/1000", { headers })
       .then((res) => {
         console.log(res.data.success);
-        if(res.data.success){
+        if (res.data.success) {
           console.log(res.data.data)
           setPlayers(res.data.data);
         }
-        
+
       });
   }, [])
 
   return (
     <>
-      <div>For Approval Players</div>
-      <div>
-        <DataGrid
-          rows={players}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-        />
-
+      <div className="card">
+        <h3>
+          <div className="card-header">For Approval Players</div>
+        </h3>
+        <div className="card-body">
+          <div className="row">
+            <div className="col">
+              <DataGrid
+                rows={players}
+                columns={columns}
+                initialState={{
+                  pagination: {
+                    paginationModel: { page: 0, pageSize: 5 },
+                  },
+                }}
+                pageSizeOptions={[5, 10]}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </>
 

@@ -45,7 +45,7 @@ const Logs = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/wallet/findWalletTxnListByAgent/${paginationModel.page}/${paginationModel.pageSize}`, {headers})
+      .get(`http://localhost:8080/wallet/findWalletTxnListByAgent/${paginationModel.page}/${paginationModel.pageSize}`, { headers })
       .then((res) => {
         console.log(res.data);
         setData(res.data.data);
@@ -57,36 +57,41 @@ const Logs = (props: Props) => {
 
   return (
     <>
-      <div>Wallet Transaction Logs</div>
-      <br />
-      <div>
-        <DataGrid
-          rows={data}
-          columns={columns}
-          pagination
-          checkboxSelection
-          paginationModel={paginationModel}
-          pageSizeOptions={[5]}
-          rowCount={100}
-          paginationMode="server"
-          onPaginationModelChange={setPaginationModel}
-          onRowSelectionModelChange={(newRowSelectionModel) => {
-            setRowSelectionModel(newRowSelectionModel);
-          }}
-          rowSelectionModel={rowSelectionModel}
-          loading={loading}
-          keepNonExistentRowsSelected
-        /*initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}*/
-        />
 
-
+      <div className="card">
+        <h3>
+          <div className="card-header">Wallet Transaction Logs</div>
+        </h3>
+        <div className="card-body">
+          <div className="row">
+            <div className="col">
+              <DataGrid
+                rows={data}
+                columns={columns}
+                pagination
+                checkboxSelection
+                paginationModel={paginationModel}
+                pageSizeOptions={[5]}
+                rowCount={100}
+                paginationMode="server"
+                onPaginationModelChange={setPaginationModel}
+                onRowSelectionModelChange={(newRowSelectionModel) => {
+                  setRowSelectionModel(newRowSelectionModel);
+                }}
+                rowSelectionModel={rowSelectionModel}
+                loading={loading}
+                keepNonExistentRowsSelected
+              /*initialState={{
+                pagination: {
+                  paginationModel: { page: 0, pageSize: 5 },
+                },
+              }}*/
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </>
-
   );
 };
 

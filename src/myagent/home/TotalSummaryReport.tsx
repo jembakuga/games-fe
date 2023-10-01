@@ -32,13 +32,13 @@ const TotalSummaryReport = (props: Props) => {
     pageSize: 5,
   });
   const [rowSelectionModel, setRowSelectionModel] =
-  React.useState<GridRowSelectionModel>([]);
+    React.useState<GridRowSelectionModel>([]);
 
   // Set the Authorization header in the Axios request
   const headers = {
     Authorization: `Bearer ${token}`,
   };
-  
+
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 50 },
     { field: 'gameNo', headerName: 'Game Number', width: 200 },
@@ -57,33 +57,63 @@ const TotalSummaryReport = (props: Props) => {
 
   return (
     <>
+      <div className="card">
+        <h3>
+          <div className="card-header">Game Summary</div>
+        </h3>
+        <div className="card-body">
+            <div className="row">
+              <div className="col">
+                <DataGrid
+                  rows={data}
+                  columns={columns}
+                  pagination
+                  checkboxSelection
+                  paginationModel={paginationModel}
+                  pageSizeOptions={[5]}
+                  rowCount={100}
+                  paginationMode="server"
+                  onPaginationModelChange={setPaginationModel}
+                  onRowSelectionModelChange={(newRowSelectionModel) => {
+                    setRowSelectionModel(newRowSelectionModel);
+                  }}
+                  rowSelectionModel={rowSelectionModel}
+                  loading={loading}
+                  keepNonExistentRowsSelected
+                /*initialState={{
+                  pagination: {
+                    paginationModel: { page: 0, pageSize: 5 },
+                  },
+                }}*/
+                />
+              </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div>
         <div className="header">Game Summary</div>
       </div>
       <br />
       <div>
-        <DataGrid
-          rows={data}
-          columns={columns}
-          pagination
-          checkboxSelection
-          paginationModel={paginationModel}
-          pageSizeOptions={[5]}
-          rowCount={100}
-          paginationMode="server"
-          onPaginationModelChange={setPaginationModel}
-          onRowSelectionModelChange={(newRowSelectionModel) => {
-            setRowSelectionModel(newRowSelectionModel);
-          }}
-          rowSelectionModel={rowSelectionModel}
-          loading={loading}
-          keepNonExistentRowsSelected
-        /*initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
-          },
-        }}*/
-        />
+
 
       </div>
     </>

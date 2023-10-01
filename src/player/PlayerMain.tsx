@@ -10,7 +10,7 @@ import Navbar from './common/Navbar';
 const PlayerMain = () => {
   return (
     <>
-      <Navbar />
+      <ToolbarComponent />
       <Routes>
         <Route path="/sabong" element={<SabongMain />} />
         <Route path="/ec2" element={<Ec2Main />} />

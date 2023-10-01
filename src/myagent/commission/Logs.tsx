@@ -32,7 +32,7 @@ const Logs = (props: Props) => {
   const [sabong, setSabong] = useState<Data[]>([]);
   const [others, setOthers] = useState<Data[]>([]);
   const token = localStorage.getItem('token');
-  
+
   // Set the Authorization header in the Axios request
   const headers = {
     Authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ const Logs = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/commission/loadLogs/0/1000", {headers})
+      .get("http://localhost:8080/commission/loadLogs/0/1000", { headers })
       .then((res) => {
         console.log(res.data);
         setSabong(res.data.data.sabong);
@@ -72,40 +72,54 @@ const Logs = (props: Props) => {
 
   return (
     <>
-      <div>Commission Logs</div>
-      <br />
-      <div>Summary Report for Sabong</div>
-      <div>
-        <DataGrid
-          rows={sabong}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-        />
+
+      <div className="card">
+        <h3>
+          <div className="card-header">Commission Logs</div>
+        </h3>
+        <div className="card-body">
+          <div className='row'>
+            <div className='col'>
+              <h5>Summary Report for Sabong</h5>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <DataGrid
+                rows={sabong}
+                columns={columns}
+                initialState={{
+                  pagination: {
+                    paginationModel: { page: 0, pageSize: 5 },
+                  },
+                }}
+                pageSizeOptions={[5, 10]}
+              />
+            </div>
+          </div>
+          <br />
+          <div className="row">
+            <div className="col">
+              <h5>Summary Report for EZ2/3D LOTTO/PICK3/GAME-ENDING</h5>
+            </div>
+            <div className="row">
+              <div className="col">
+                <DataGrid
+                  rows={others}
+                  columns={columns}
+                  initialState={{
+                    pagination: {
+                      paginationModel: { page: 0, pageSize: 5 },
+                    },
+                  }}
+                  pageSizeOptions={[5, 10]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <br />
-      <div>Summary Report for EZ2/3D LOTTO/PICK3/GAME-ENDING</div>
-      <div>
-        <DataGrid
-          rows={others}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-        />
-      </div>
-
-
-
     </>
-
   );
 };
 

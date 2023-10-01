@@ -34,10 +34,10 @@ const Active = (props: Props) => {
     { field: 'walletPoints', headerName: 'Wallet Points', type: 'number', width: 100 },
     { field: 'sabongCurrentCommission', headerName: 'Sabong', type: 'number', width: 120 },
     { field: 'ez2CurrentCommission', headerName: 'Ez2', type: 'number', width: 120 },
-    { field: 'lotto3dCurrentCommission', headerName: 'Lotto 3D', type: 'number', width: 120},
-    { field: 'pick3CurrentCommission', headerName: 'Pick3', type: 'number', width: 120},
-    { field: 'gameEndingCurrentCommission', headerName: 'Game Ending',type: 'number', width: 120},
-    { field: 'createdDateStr', headerName: 'Registered Date', width:200},
+    { field: 'lotto3dCurrentCommission', headerName: 'Lotto 3D', type: 'number', width: 120 },
+    { field: 'pick3CurrentCommission', headerName: 'Pick3', type: 'number', width: 120 },
+    { field: 'gameEndingCurrentCommission', headerName: 'Game Ending', type: 'number', width: 120 },
+    { field: 'createdDateStr', headerName: 'Registered Date', width: 200 },
     /*
     {
       field: 'fullName',
@@ -52,7 +52,7 @@ const Active = (props: Props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/player/findPaginatedAgentPlayers/0/11", {headers})
+      .get("http://localhost:8080/player/findPaginatedAgentPlayers/0/11", { headers })
       .then((res) => {
         console.log(res.data.data);
         setPlayers(res.data.data);
@@ -62,22 +62,31 @@ const Active = (props: Props) => {
 
   return (
     <>
-    <div>Active Players</div>
-    <div>
-    <DataGrid 
-          rows={players}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-        />
 
-    </div>
+      <div className="card">
+        <h3>
+          <div className="card-header">Active Players</div>
+        </h3>
+        <div className="card-body">
+          <div className="row">
+            <div className="col">
+              <DataGrid
+                rows={players}
+                columns={columns}
+                initialState={{
+                  pagination: {
+                    paginationModel: { page: 0, pageSize: 5 },
+                  },
+                }}
+                pageSizeOptions={[5, 10]}
+              />
+
+            </div>
+          </div>
+        </div>
+      </div>
     </>
-    
+
   );
 };
 

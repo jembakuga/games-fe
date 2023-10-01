@@ -135,102 +135,95 @@ const SelfConvert = (props: Props) => {
           <div className="card-header">Commission Management</div>
         </h3>
         <div className="card-body">
-          <div className="container">
+          <div className="row">
+            <div className="col"><WalletPoints walletPoints={walletPoints} /></div>
+            <div className="col"><SabongCommission sabongCommission={sabongComm} /></div>
+            <div className="col"><Ez2Commission ez2Commission={ez2Comm} /></div>
+            <div className="col"><Lotto3DCommission lotto3DCommission={lotto3dCurrentCommission} /></div>
+            <div className="col"><Pick3Commission pick3Commission={pick3CurrentCommission} /></div>
+            <div className="col"><GameEndingCommission gameEndingCommission={gameEndingCurrentCommission} /></div>
+          </div>
+          <br />
+          <div className="card">
+            <h5>
+              <div className="card-header">Commission Loading Station</div>
+            </h5>
             <div className="row">
-              <div className="col"><WalletPoints walletPoints={walletPoints} /></div>
-              <div className="col"><SabongCommission sabongCommission={sabongComm} /></div>
-              <div className="col"><Ez2Commission ez2Commission={ez2Comm} /></div>
-              <div className="col"><Lotto3DCommission lotto3DCommission={lotto3dCurrentCommission} /></div>
-              <div className="col"><Pick3Commission pick3Commission={pick3CurrentCommission} /></div>
-              <div className="col"><GameEndingCommission gameEndingCommission={gameEndingCurrentCommission} /></div>
-            </div>
-            <br />
-            <div className="card">
-              <h5>
-                <div className="card-header">Commission Loading Station</div>
-              </h5>
-              <div className="row">
-                <div className="card-body">
-                  <div className="container">
-                    <div className="row">
-                      <div className="col"><h6>Self Commission Convert Form</h6></div>
-                    </div>
-                    <div className="row">
-                      <div className="col-sm-2">Amount</div>
-                      <div className="col-sm-10">
-                        <TextField
-                          id="amount"
-                          label="Amount"
-                          type="number"
-                          onChange={(event) => {
-                            console.log(event);
-                            setAmount(event.target.value);
-                          }}
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-sm-2">Commission Type</div>
-                      <div className="col-sm-10">
-                        <TextField
-                          select
-                          label="Select a transaction type"
-                          variant="outlined"
-                          fullWidth
-                          value={selectedCommType}
-                          onChange={(event) => {
-                            setSelectedCommType(event.target.value);
-                          }}
-                          margin="normal"
-                        >
-                          {commmissionTypes.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
-                              {option.label}
-                            </MenuItem>
-                          ))}
-                        </TextField>
-                      </div>
-                    </div>
-                    <div className='row'>
-                      <div className='col-sm-1'>
-                        <Button variant="contained" onClick={handleSubmitClick}>Submit</Button>
-                      </div>
-                      <div className='col-sm-1'>
-                        <Button variant="contained">Cancel</Button>
-                      </div>
-                    </div>
+              <div className="card-body">
+                <div className="row">
+                  <div className="col-sm-2">Amount</div>
+                  <div className="col-sm-10">
+                    <TextField
+                      id="amount"
+                      label="Amount"
+                      type="number"
+                      onChange={(event) => {
+                        console.log(event);
+                        setAmount(event.target.value);
+                      }}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-2">Commission Type</div>
+                  <div className="col-sm-10">
+                    <TextField
+                      select
+                      label="Select a transaction type"
+                      variant="outlined"
+                      fullWidth
+                      value={selectedCommType}
+                      onChange={(event) => {
+                        setSelectedCommType(event.target.value);
+                      }}
+                      margin="normal"
+                    >
+                      {commmissionTypes.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
+                  </div>
+                </div>
+                <div className='row'>
+                  <div className='col-sm-1'>
+                    <Button variant="contained" onClick={handleSubmitClick}>Submit</Button>
+                  </div>
+                  <div className='col-sm-1'>
+                    <Button variant="contained">Cancel</Button>
                   </div>
                 </div>
               </div>
-              <div className='row'>
-                <div className='col'>
-                  <DataGrid
-                    rows={data}
-                    columns={columns}
-                    pagination
-                    checkboxSelection
-                    paginationModel={paginationModel}
-                    pageSizeOptions={[5]}
-                    rowCount={100}
-                    paginationMode="server"
-                    onPaginationModelChange={setPaginationModel}
-                    onRowSelectionModelChange={(newRowSelectionModel) => {
-                      setRowSelectionModel(newRowSelectionModel);
-                    }}
-                    rowSelectionModel={rowSelectionModel}
-                    loading={loading}
-                    keepNonExistentRowsSelected
-                  /*initialState={{
-                    pagination: {
-                      paginationModel: { page: 0, pageSize: 5 },
-                    },
-                  }}*/
-                  />
-                </div>
-              </div>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col'>
+              <DataGrid
+                rows={data}
+                columns={columns}
+                pagination
+                checkboxSelection
+                paginationModel={paginationModel}
+                pageSizeOptions={[5]}
+                rowCount={100}
+                paginationMode="server"
+                onPaginationModelChange={setPaginationModel}
+                onRowSelectionModelChange={(newRowSelectionModel) => {
+                  setRowSelectionModel(newRowSelectionModel);
+                }}
+                rowSelectionModel={rowSelectionModel}
+                loading={loading}
+                keepNonExistentRowsSelected
+              /*initialState={{
+                pagination: {
+                  paginationModel: { page: 0, pageSize: 5 },
+                },
+              }}*/
+              />
             </div>
           </div>
         </div>
