@@ -4,10 +4,11 @@ import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import '../../css/mystyle.css'
 
 const ToolbarComponent = () => {
   return (
-    <AppBar position="static">
+    <AppBar className='toolbar-style' position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
          

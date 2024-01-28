@@ -14,7 +14,7 @@ const App: React.FC = () => {
       <Router>
       <Routes>
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/loginPage" element={<LoginPage />} />
+        <Route path="/loginForm" element={<LoginForm />} />
         <Route path="/playerboard/*" element={<PlayerMain />} />
         <Route path="/gcboard/*" element={<GcMain />} />
         <Route path="/myagentboard/*" element={<AgentMain />} />

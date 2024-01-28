@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import VideoPlayer from './VideoPlayer';
 import BettingArea from './BettingArea';
 import axios from 'axios';
+import StreamingPlayer from './StreamingPlayer';
 
 const SabongArena = () => {
   const { title, url } = useParams();
@@ -46,7 +47,8 @@ const SabongArena = () => {
         </Typography>
       </Grid>
       <Grid item lg={6} md={6} xs={12}>
-        <VideoPlayer m3u8Url="testste" />
+        {/*<VideoPlayer m3u8Url="testste" />*/}
+        <StreamingPlayer />
       </Grid>
       <Grid item lg={6} md={6} xs={12}>
         <BettingArea onBet={updateBalance} betType={'100'} walaTotalBet={123} walaPayout={32} meronTotalBet={444} meronPayout={788} betAmount={0} />
